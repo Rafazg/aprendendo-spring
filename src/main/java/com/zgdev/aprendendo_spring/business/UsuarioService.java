@@ -4,6 +4,7 @@ import com.zgdev.aprendendo_spring.infrastructure.entity.Usuario;
 import com.zgdev.aprendendo_spring.infrastructure.exceptions.ConflictException;
 import com.zgdev.aprendendo_spring.infrastructure.repository.UsuarioRepository;
 import lombok.RequiredArgsConstructor;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -11,12 +12,14 @@ import org.springframework.stereotype.Service;
 public class UsuarioService {
 
     private final UsuarioRepository usuarioRepository;
+    private final PasswordEncoder passwordEncoder;
 
 
     public Usuario salvaUsuario(Usuario usuario){
         try {
             // código que pode gerar uma exceção
             emailExiste(usuario.getEmail());
+            usuario.setSenha(passwordEncoder.encode(usuario.getSenha()));
             return usuarioRepository.save(usuario);
 
         } catch (ConflictException e){

@@ -8,5 +8,6 @@ public interface UsuarioRepository extends JpaRepository<Usuario, Long>{
 
     boolean existsByEmail(String email);
 
+    // "Optional evita o retorno de informações nulas"
     Optional<Usuario> findByEmail(String email);
 }

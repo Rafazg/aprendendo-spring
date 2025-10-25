@@ -31,7 +31,7 @@ public class Usuario implements UserDetails {
     private String email;
 
 
-    @Column(name = "senha", length = 10)
+    @Column(name = "senha", length = 255)
     private String senha;
 
     // Relacionamento entre tabelas
