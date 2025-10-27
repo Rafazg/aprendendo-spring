@@ -34,4 +34,16 @@ public class UsuarioController {
         );
         return "Bearer" + jwtUtil.generateToken(authentication.getName());
     }
+
+    @GetMapping
+    public ResponseEntity<Usuario> buscarUsuarioPorEmail(@RequestParam("email") String email){
+        return ResponseEntity.ok(usuarioService.buscarUsuarioPorEmail(email));
+    }
+
+    @DeleteMapping("/{email}")
+    public ResponseEntity<Void> deletaUsuarioPorEmail(@PathVariable String email){
+        usuarioService.deletaUsuarioPorEmail(email);
+        return ResponseEntity.ok().build();
+    }
+
 }
