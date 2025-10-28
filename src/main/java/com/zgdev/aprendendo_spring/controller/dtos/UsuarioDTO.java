@@ -26,8 +26,4 @@ public class UsuarioDTO {
         this.email = email;
         this.enderecos = enderecos;
     }
-
-    public UsuarioDTO(String senha) {
-        this.senha = senha;
-    }
 }

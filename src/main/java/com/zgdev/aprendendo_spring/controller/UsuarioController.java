@@ -1,6 +1,7 @@
 package com.zgdev.aprendendo_spring.controller;
 
 import com.zgdev.aprendendo_spring.business.UsuarioService;
+import com.zgdev.aprendendo_spring.controller.dtos.RecuperaSenhaDTO;
 import com.zgdev.aprendendo_spring.controller.dtos.UsuarioDTO;
 import com.zgdev.aprendendo_spring.infrastructure.entity.Usuario;
 import com.zgdev.aprendendo_spring.infrastructure.security.JwtUtil;
@@ -43,10 +44,10 @@ public class UsuarioController {
     }
 
     @GetMapping("/recuperaSenha")
-    public ResponseEntity<UsuarioDTO> verificarSenhaPorEmail(@RequestParam("email") String email){
+    public ResponseEntity<RecuperaSenhaDTO> verificarSenhaPorEmail(@RequestParam("email") String email){
         Usuario usuario = usuarioService.buscarUsuarioPorEmail(email);
-        UsuarioDTO UsuarioDTO;
-        return ResponseEntity.ok(UsuarioDTO = new UsuarioDTO(usuario.getSenha()));
+        RecuperaSenhaDTO RecuperaSenhaDTO;
+        return ResponseEntity.ok(RecuperaSenhaDTO = new RecuperaSenhaDTO(usuario.getSenha()));
     }
 
 
