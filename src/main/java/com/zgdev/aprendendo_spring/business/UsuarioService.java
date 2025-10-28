@@ -1,5 +1,6 @@
 package com.zgdev.aprendendo_spring.business;
 
+import com.zgdev.aprendendo_spring.controller.dtos.UsuarioDTO;
 import com.zgdev.aprendendo_spring.infrastructure.entity.Usuario;
 import com.zgdev.aprendendo_spring.infrastructure.exceptions.ConflictException;
 import com.zgdev.aprendendo_spring.infrastructure.exceptions.ResourceNotFoundException;

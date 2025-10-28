@@ -36,14 +36,24 @@ public class UsuarioController {
     }
 
     @GetMapping
-    public ResponseEntity<Usuario> buscarUsuarioPorEmail(@RequestParam("email") String email){
-        return ResponseEntity.ok(usuarioService.buscarUsuarioPorEmail(email));
+    public ResponseEntity<UsuarioDTO> buscarUsuarioPorEmail(@RequestParam("email") String email){
+        Usuario usuario = usuarioService.buscarUsuarioPorEmail(email);
+        UsuarioDTO usuarioDTO = new UsuarioDTO(usuario.getNome(), usuario.getEmail(), usuario.getEnderecos());
+        return ResponseEntity.ok(usuarioDTO);
     }
+
+    @GetMapping("/recuperaSenha")
+    public ResponseEntity<UsuarioDTO> verificarSenhaPorEmail(@RequestParam("email") String email){
+        Usuario usuario = usuarioService.buscarUsuarioPorEmail(email);
+        UsuarioDTO UsuarioDTO;
+        return ResponseEntity.ok(UsuarioDTO = new UsuarioDTO(usuario.getSenha()));
+    }
+
 
     @DeleteMapping("/{email}")
     public ResponseEntity<Void> deletaUsuarioPorEmail(@PathVariable String email){
         usuarioService.deletaUsuarioPorEmail(email);
-        return ResponseEntity.ok().build();
+        return  ResponseEntity.ok().build();
     }
 
 }
