@@ -57,4 +57,10 @@ public class UsuarioController {
         return  ResponseEntity.ok().build();
     }
 
+    @PutMapping
+    public ResponseEntity<Void> atualizarDados(@PathVariable Long id, @RequestBody String email, String nome){
+        usuarioService.atualizarUsuario();
+        return ResponseEntity.ok().
+    }
+
 }
