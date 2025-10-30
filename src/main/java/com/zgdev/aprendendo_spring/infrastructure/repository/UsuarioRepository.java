@@ -11,6 +11,7 @@ public interface UsuarioRepository extends JpaRepository<Usuario, Long>{
 
     // "Optional evita o retorno de informações nulas"
     Optional<Usuario> findByEmail(String email);
+    Optional<Usuario> findById(Long id);
 
     @Transactional
     void deleteByEmail(String email);

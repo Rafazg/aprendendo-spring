@@ -6,6 +6,7 @@ import com.zgdev.aprendendo_spring.controller.dtos.UsuarioDTO;
 import com.zgdev.aprendendo_spring.infrastructure.entity.Usuario;
 import com.zgdev.aprendendo_spring.infrastructure.security.JwtUtil;
 import lombok.RequiredArgsConstructor;
+import org.apache.coyote.Response;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -57,10 +58,10 @@ public class UsuarioController {
         return  ResponseEntity.ok().build();
     }
 
-    @PutMapping
-    public ResponseEntity<Void> atualizarDados(@PathVariable Long id, @RequestBody String email, String nome){
-        usuarioService.atualizarUsuario();
-        return ResponseEntity.ok().
+    @PutMapping("/{id}")
+    public ResponseEntity<Void> atualizarDados(@PathVariable Long id, @RequestBody UsuarioDTO usuarioDTO){
+        usuarioService.atualizarUsuario(id, usuarioDTO);
+        return ResponseEntity.ok().build();
     }
 
 }
